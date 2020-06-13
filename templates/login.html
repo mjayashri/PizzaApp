@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+{% endblock %}
+
+{% block title %}
+    Login Page
+{% endblock %}
+
+{% block body %}
+<div class="col-md-6-center">
+  <form action="" method="POST" class="form-control-lg">
+      {% csrf_token %}
+        <fieldset class="form-group">
+            <legend>Sign In</legend>
+            {% for field in form.visible_fields %}
+                <div>
+                    {{ field|add_label_class:"field-label" }}
+                    {{ field|add_class:"field-text" }}
+                </div>
+            {% endfor %}
+        </fieldset>
+        <div>
+            <button type="submit" class="btn-main-lg bg-color-blue">Log-in</button>
+        </div>
+    </form>
+    <div class="wrong-form">
+        Register if you don't have an Account ! <a href="{% url 'register' %}">Register</a>
+    </div>    
+</div>
+{% endblock %}

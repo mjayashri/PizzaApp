@@ -13,14 +13,13 @@
 {% block body %}
 <div class="col-md-6-center">
   <form action="" method="POST" class="form-control-lg">
+      {% csrf_token %}
       <fieldset class="form-group">
             <legend>Register</legend>
             {% for field in form.visible_fields %}
           <div>
-              {{ field.label }}
-              <div>
-                    {{ field |add_class:"field-text"}}
-                </div>
+                {{field|add_label_class:"field-label" }}
+                {{field|add_class:"field-text" }}
           </div>
             {% endfor %}
         </fieldset>
@@ -29,7 +28,7 @@
       </div>
   </form>
         <div class="wrong-form">
-        Login if you have an Account ! <a href="">Sign In</a>
+        Login if you have an Account ! <a href="{% url 'login' %}">Sign In</a>
     </div>
 </div>
 {% endblock %}
