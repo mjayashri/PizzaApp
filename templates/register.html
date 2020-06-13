@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+{% endblock %}
+
+{% block title %}
+    Registration Page
+{% endblock %}
+
+{% block body %}
+<div class="col-md-6-center">
+  <form action="" method="POST" class="form-control-lg">
+      <fieldset class="form-group">
+            <legend>Register</legend>
+            {% for field in form.visible_fields %}
+          <div>
+              {{ field.label }}
+              <div>
+                    {{ field |add_class:"field-text"}}
+                </div>
+          </div>
+            {% endfor %}
+        </fieldset>
+      <div>
+          <button type="submit" class="btn-main-lg bg-color-blue">Register</button>
+      </div>
+  </form>
+        <div class="wrong-form">
+        Login if you have an Account ! <a href="">Sign In</a>
+    </div>
+</div>
+{% endblock %}
