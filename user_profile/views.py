@@ -18,7 +18,7 @@ def register_view(request):
                         form.save()
                         username = form.cleaned_data.get('username')
                         messages.success(request, f"{username} you have registered successfully, "
-                                                  f"now please login")
+                                                  f"now please login your account")
                         return redirect('login')
         # user is not authenticated, GET REQUEST
         else:

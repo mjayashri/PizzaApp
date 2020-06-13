@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'user_profile',
+    'pizza_page',
     'widget_tweaks',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -123,6 +124,9 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # login view
 LOGIN_URL = 'login'
