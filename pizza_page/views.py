@@ -44,7 +44,7 @@ def main_view(request):
             orderitem = OrderItem(order_id=order_instance, food_id=food_instance, food_price=price_instance)
             orderitem.save()
 
-            return redirect("index")
+            return redirect("main_page")
 
         # if request to place an order
         else:

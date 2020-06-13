@@ -8,7 +8,7 @@ from .forms import RegisterForm
 def register_view(request):
         # check if user is already authenticated
         if request.user.is_authenticated:
-                return redirect('index')
+                return redirect('main_page')
 
         # user is not authenticated, POST REQUEST
         elif request.method == "POST":

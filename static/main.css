@@ -52,6 +52,24 @@ main.main-view{
     align-items: center;
     justify-content: center;
 }
+.grid-row-2col{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    grid-auto-flow: dense;
+    gap: 0.3em;
+    align-items: center;
+    justify-items: auto;
+}
+.grid-row-3col{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-auto-flow: dense;
+    gap: 0.3em;
+    align-items: center;
+    justify-items: auto;
+}
 
 footer{
     position: fixed;
@@ -91,7 +109,7 @@ hr {
     /*background-color: #ac0d0d;*/
 }
 .navbar-brand {
-    font-family: "Apple Chancery, Cursive";
+    font-family: "Helvetica, sans-serif";
     font-size: 1.5rem;
     text-decoration: none;
     color: var(--color-2);
@@ -133,7 +151,7 @@ hr {
 
 /* username box */
 .user-display-area h3 {
-    color: var(--color-3);
+    color: var(--color-2);
     float: right;
 }
 
@@ -254,6 +272,73 @@ hr {
     position: relative;
 }
 
+/* /////////////////////////////////// */
+/* /// card display for food items /// */
+/* /////////////////////////////////// */
+
+.card {     /* preparing the image container box */
+    position: relative;
+    width: max-content;
+    margin: 0.7em;
+    background: black;
+}
+/* styling image box */
+.card-img{
+    max-width: 500px;
+    max-height: 500px;
+    display: block;
+    transition: opacity ease-out 250ms;
+}
+/* styling the text box to be centered in the image */
+.card-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    font-size: 1rem;
+    transform: translate(-50%, -50%);   /* this minuses 50% of box itself */
+    color: white;
+    opacity: 0;     /* set the text opacity initially to 0 (transperent), then 1 on hover  */
+    transition: opacity ease-out 250ms;
+}
+.card-title{
+    font-size: 1.5rem;
+}
+/* set common style for before and ofter */
+.card::before, .card::after{
+    content: '';
+    position: absolute;
+    top: 1.25em;
+    bottom: 1.25em;
+    left: 1.25em;
+    right: 1.25em;
+    opacity: 1;
+    transition: transform ease-out 250ms;
+}
+/* set card before style while leaving some effects for the hover */
+.card::before {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    transform: scale(0,1);
+}
+.card::after {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    transform: scale(1,0);
+}
+/* on card hover change the before style */
+.card:hover::before {
+    transform: scale(1.05, 1);
+}
+.card:hover::after {
+    transform: scale(1, 1.05);
+}
+.card:hover .card-img {
+    opacity: 0.5;
+}
+.card:hover .card-text {
+    opacity: 1;
+  }
 
 /* //////////////////////////////////////////// */
 /* /////// login & register pages forms /////// */

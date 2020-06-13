@@ -6,10 +6,25 @@
 {% endblock %}
 
 {% block body %}
-
+      <div class="grid-row-2col">
+        {% for food in foods %}
+              <div class="card">
+                <img src="{{ food.image.url }}" alt="{{ food.name }}" class="card-img">
+                <div class="card-text">
+                  <h5 class="card-title">{{ food.name }}</h5>
+                  <ul>
+                    {% for p in prices %}
+                      {% if p.food_id.id == food.id %}
+                          <li class="{{ p.food_id }}">{{ p }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+        {% endfor %}
+      </div>
 {% endblock %}
 
 {% block js %}
   <script src="{% static 'main.js' %}"></script>
 {% endblock %}
-s
