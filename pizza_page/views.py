@@ -82,7 +82,7 @@ def main_view(request):
     return render(request, "main_page.html", context)
 
 @login_required
-def orders_list(request, orderid):
+def order(request, orderid):
     #
     try:
         posted_order = Order.objects.filter(id=orderid, cust_id=request.user.id).exclude(status="NP").first()
@@ -108,4 +108,19 @@ def orders_list(request, orderid):
 
     for i in context["fooditems"]:
         context["total"] += i.food_price.price
-    return render(request, "orders_history.html", context)
+    return render(request, "order.html", context)
+
+@login_required
+def orders_list(request):
+
+    context = {}
+
+    # check if user has (placed) orders and return orders
+    try:
+        context["posted_orders"] = Order.objects.filter(cust_id=request.user.id).exclude(status="NP").all()
+    except:
+        pass
+    return render(request, "order_history.html", context)
+
+
+

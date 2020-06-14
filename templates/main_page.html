@@ -28,54 +28,62 @@
 
 <!-- ordering form -->
 <div class="col-md-3">
-<div class="ordering">
-<form class="form-control-md" action="{% url 'main_view' %}" method="post">
-        {% csrf_token %}
-        <!-- food selection  -->
-        <legend class="plain">Start Adding food item to your cart</legend>
-        <!-- food item selection of category  -->
-        <fieldset class="form-field" id="foods_selector">
-          <label class="field-label" for="foods_choice">Choose a Food Item</label>
-          <select name="food" id="foods_choice" class="custom-select">
-              <option selected>Choose...</option>
-                {% for food in foods %}
-                    <option value="{{ food.name }}">{{ food.name }}</option>
-                {% endfor %}
-          </select>
-        </fieldset>
-        <!-- prices / size selection of food item -->
-        <fieldset class="form-field" id="prices_selector">
-          <label class="field-label" for="prices_choice">Choose a Size</label>
-          <select name="size" id="prices_choice" class="custom-select">
-          </select>
-        </fieldset>
-        <button type="submit" class="btn-main-lg bg-color-green">Add To Cart</button>
-      </form>
-</div>
+    <div class="ordering">
+    <form class="form-control-md" action="{% url 'main_view' %}" method="post">
+            {% csrf_token %}
+            <!-- food selection  -->
+            <legend class="plain">Start Adding food item to your cart</legend>
+            <!-- food item selection of category  -->
+            <fieldset class="form-field" id="foods_selector">
+              <label class="field-label" for="foods_choice">Choose a Food Item</label>
+              <select name="food" id="foods_choice" class="custom-select">
+                  <option selected>Choose...</option>
+                    {% for food in foods %}
+                        <option value="{{ food.name }}">{{ food.name }}</option>
+                    {% endfor %}
+              </select>
+            </fieldset>
 
- <!-- shoping cart -->
-<div class="col-md-12">
-    <div class="cart">
-        {% for item in fooditems %}
-          <div class="cart-items">
-              <span class="item-price">{{ item.food_price.price }}$</span>
-        {% endfor %}
-      </div>
+            <!-- prices / size selection of food item -->
+            <fieldset class="form-field" id="prices_selector">
+              <label class="field-label" for="prices_choice">Choose a Size</label>
+              <select name="size" id="prices_choice" class="custom-select">
+              </select>
+            </fieldset>
 
-      <div class="total">
-        <span>Total (USD)</span>
-        <strong>{{ total }}</strong>
-      </div>
+            <button type="submit" class="btn-main-lg bg-color-green">Add To Cart</button>
 
-
-      <form class="" action="{% url 'main_view' %}" method="post">
-        {% csrf_token %}
-        <button type="submit" id="place_order" class=" btn-main-lg bg-color-red">Place Your Order Now</button>
-      </form>
-
+          </form>
     </div>
-  </div>
+
+     <!-- shoping cart -->
+    <div class="cart">
+        <div class="grid-row-2col">
+            {% for item in fooditems %}
+              <div class="cart-items">
+                  <h5 class="">{{ item.food_id }}</h5>
+                  <span class="item-price">${{ item.food_price.price }}</span> -
+                  <span class="item-price">{{ item.food_price.size }}</span>
+              </div>
+            <hr>
+            {% endfor %}
+
+        </div>
+
+        <div class="total">
+            <span>Total (USD)</span>
+            <strong>{{ total }}</strong>
+        </div>
+
+        <form class="" action="{% url 'main_view' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" id="place_order" class=" btn-main-lg bg-color-red">Place Your Order Now</button>
+        </form>
+    </div>
 </div>
+
+
+
 {% endblock %}
 
 {% block js %}

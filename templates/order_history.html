@@ -6,24 +6,16 @@
 {% endblock %}
 
 {% block body %}
-  <div class="col-md-12">
+  <div class="col-md-6-center">
     <div class="receipt">
-      <legend>Order NO {{ posted_order.id }}
-        <span class="badge badge-small">Status: {{ posted_order.get_status_display }}</span>
-        <span class="badge badge-small">Contains: {{fooditems|length}} Food Items</span>
-      </legend>
-      <br>
-      {% for item in fooditems %}
-        <div class="receipt-item">{{ item.food_id }}
-          <span class="receipt-item-price">{{ item.food_price.price }}$</span>
+            <legend>Order History</legend>
+      {% csrf_token %}
+      {% for order in posted_orders %}
+        <div class="receipt-item">
+          <a class="receipt-item-price" href="{% url 'order' order.id %}">Order ID {{order.id}}$</a>
         </div>
         <hr>
       {% endfor %}
-      <div class="total">
-        <span>Total (USD)</span>
-        <strong>{{ total }}</strong>
-      </div>
-      <br>
     </div>
   </div>
 {% endblock %}
