@@ -108,4 +108,4 @@ def orders_list(request, orderid):
 
     for i in context["fooditems"]:
         context["total"] += i.food_price.price
-    return render(request, "orders.html", context)
+    return render(request, "orders_history.html", context)

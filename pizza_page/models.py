@@ -30,7 +30,7 @@ class Price(models.Model):
     price = models.DecimalField(max_digits=4, decimal_places=2)
 
     def __str__(self):
-        return f"{self.price}-{self.size}"
+        return f"{self.price} - {self.size}"
 
 class Order(models.Model):
     cust_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="customer_id")

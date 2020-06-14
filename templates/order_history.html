@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'main.css' %}">
+{% endblock %}
+
+{% block body %}
+  <div class="col-md-12">
+    <div class="receipt">
+      <legend>Order NO {{ posted_order.id }}
+        <span class="badge badge-small">Status: {{ posted_order.get_status_display }}</span>
+        <span class="badge badge-small">Contains: {{fooditems|length}} Food Items</span>
+      </legend>
+      <br>
+      {% for item in fooditems %}
+        <div class="receipt-item">{{ item.food_id }}
+          <span class="receipt-item-price">{{ item.food_price.price }}$</span>
+        </div>
+        <hr>
+      {% endfor %}
+      <div class="total">
+        <span>Total (USD)</span>
+        <strong>{{ total }}</strong>
+      </div>
+      <br>
+    </div>
+  </div>
+{% endblock %}
