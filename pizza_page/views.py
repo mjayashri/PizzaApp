@@ -44,7 +44,7 @@ def main_view(request):
             orderitem = OrderItem(order_id=order_instance, food_id=food_instance, food_price=price_instance)
             orderitem.save()
 
-            return redirect("main_page")
+            return redirect("main_view")
 
         # if request to place an order
         else:
@@ -80,3 +80,32 @@ def main_view(request):
         pass
 
     return render(request, "main_page.html", context)
+
+@login_required
+def orders_list(request, orderid):
+    #
+    try:
+        posted_order = Order.objects.filter(id=orderid, cust_id=request.user.id).exclude(status="NP").first()
+    except:
+        raise Http404("You don't have orders yet")
+
+    context = {
+    "posted_order": posted_order
+    }
+
+    # check if user has (placed) orders and return orders
+    try:
+        context["posted_orders"] = Order.objects.filter(cust_id=request.user.id).exclude(status="NP").all()
+    except:
+        pass
+
+    try:
+        context["fooditems"] = Order.objects.filter(cust_id=request.user.id, id=orderid).first().order_id.all()
+    except:
+        raise Http404("You don't have an order with this no")
+
+    context["total"] = 0
+
+    for i in context["fooditems"]:
+        context["total"] += i.food_price.price
+    return render(request, "orders.html", context)

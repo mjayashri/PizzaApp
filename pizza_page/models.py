@@ -26,11 +26,11 @@ class Price(models.Model):
         ('S', 'Small'),
         ('L', 'Large'),
     )
-    name = models.CharField(max_length=1, choices=name_selection)
+    size = models.CharField(max_length=1, choices=name_selection)
     price = models.DecimalField(max_digits=4, decimal_places=2)
 
     def __str__(self):
-        return f"{self.get_name_display()}: {self.price}"
+        return f"{self.price}-{self.size}"
 
 class Order(models.Model):
     cust_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="customer_id")
@@ -44,7 +44,6 @@ class Order(models.Model):
 
     def __str__(self):
         return f"order no: {self.id}"
-
 
 class OrderItem(models.Model):
     order_id = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="order_id")
