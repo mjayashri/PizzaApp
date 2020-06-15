@@ -71,7 +71,7 @@ def main_view(request):
         for i in context["fooditems"]:
             context["total"] += i.food_price.price
 
-        context["totaleuro"] = round(context["total"]/0.15,2)
+        context["totaleuro"] = round(float(context["total"])*0.89,2)
 
         context["deliverycost"] = 3
     except AttributeError:
@@ -114,7 +114,7 @@ def order(request, orderid):
     for i in context["fooditems"]:
         context["total"] += i.food_price.price
 
-    context["totaleuro"] = round(context["total"]/0.15,2)
+    context["totaleuro"] = round(float(context["total"])*0.89,2)
 
     # context["total-euro"] = Decimal(context["total-dollar"]/0.15)
     return render(request, "order.html", context)
