@@ -134,7 +134,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_URL = 'login'
 
 # login redirection
-LOGIN_REDIRECT_URL = '//'
+LOGIN_REDIRECT_URL = '/'
 
 #Django heroku
 django_heroku.settings(locals())
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
