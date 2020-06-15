@@ -9,7 +9,8 @@
       
       <!-- import fonts -->
       <link href="https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap" rel="stylesheet">
-      
+
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       <!-- custom css -->
       {% block css %}
       {% endblock %}
@@ -22,7 +23,7 @@
       <header>
         <!-- Site LOGO -->
         <div id="site_logo">
-          <a class="navbar-brand" href="{% url 'main_view' %}"><h3> Jayashri's Pizza House  </h3></a>
+          <a class="navbar-brand" href="{% url 'main_view' %}"> Jayashri's Pizza House  </a>
         </div>
         <!-- Navbar content -->
         <nav class="navbar">
@@ -34,7 +35,7 @@
               <div class="user-display-area">
                 <a class="nav-item nav-link" href="{% url 'orders_list'%}">Order history</a>
                 <a class="nav-item nav-link" href="{% url 'logout' %}">Log-out</a>
-                <h3 id="display_name_is" class="nav-item nav-link">Hello {{ user.username }}</h3>
+                <a class="nav-item nav-link">Hello {{ user.username }}</a>
               </div>
 
             {% else %}

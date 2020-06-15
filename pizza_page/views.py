@@ -122,5 +122,6 @@ def orders_list(request):
         pass
     return render(request, "order_history.html", context)
 
-
+def order_confirmation(request):
+    return render(request, "place_order.html")
 

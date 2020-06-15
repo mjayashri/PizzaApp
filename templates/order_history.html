@@ -6,16 +6,17 @@
 {% endblock %}
 
 {% block body %}
-  <div class="col-md-6-center">
-    <div class="receipt">
-            <legend>Order History</legend>
-      {% csrf_token %}
-      {% for order in posted_orders %}
-        <div class="receipt-item">
-          <a class="receipt-item-price" href="{% url 'order' order.id %}">Order ID {{order.id}}$</a>
-        </div>
-        <hr>
-      {% endfor %}
+<div class="col-md-6-center">
+  <h2>Order History</h2>
+  <div class="form-control-lg">
+    {% for order in posted_orders %}
+      <div>
+        <a class="form-group" href="{% url 'order' order.id %}"><h3>Order ID {{order.id}}$</h3></a>
+      </div>
+      <hr>
+    {% endfor %}
+
     </div>
-  </div>
+
+</div>
 {% endblock %}

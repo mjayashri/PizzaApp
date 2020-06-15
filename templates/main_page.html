@@ -50,9 +50,7 @@
               <select name="size" id="prices_choice" class="custom-select">
               </select>
             </fieldset>
-
-            <button type="submit" class="btn-main-lg bg-color-green">Add To Cart</button>
-
+            <button type="submit" class="btn-main-lg">Add To Cart</button>
           </form>
     </div>
 
@@ -67,22 +65,23 @@
               </div>
             <hr>
             {% endfor %}
-
         </div>
 
         <div class="total">
             <span>Total (USD)</span>
-            <strong>{{ total }}</strong>
+            {{ total }}
         </div>
-
-        <form class="" action="{% url 'main_view' %}" method="post">
-            {% csrf_token %}
-            <button type="submit" id="place_order" class=" btn-main-lg bg-color-red">Place Your Order Now</button>
-        </form>
+        <br>
     </div>
+    <form class="" action="{% url 'order_confirmation' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class=" btn-main-lg bg-color-red">Add Address</button>
+    </form>
+    <form class="" action="{% url 'main_view' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" id="place_order" class=" btn-main-lg bg-color-red">Confirm The Payment</button>
+    </form>
 </div>
-
-
 
 {% endblock %}
 

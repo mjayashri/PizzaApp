@@ -55,6 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById("place_order").onclick = () => {
     alert('are you sure you want to place this order ?');
-    return true;
+    return true
   }
+
 });
+
+
+
+
+

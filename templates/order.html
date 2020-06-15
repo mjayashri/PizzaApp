@@ -7,15 +7,14 @@
 
 {% block body %}
   <div class="col-md-6-center">
-    <div class="receipt">
-      <legend>Order NO {{ posted_order.id }}
+    <div class="form-control-lg">
+      <h3>Order Number - {{ posted_order.id }}
         <br>
         <span class="badge badge-small">Status: {{ posted_order.get_status_display }}</span>
         <br>
-        <span class="badge badge-small">Contains: {{fooditems|length}} Food Items</span>
-      </legend>
+        <span class="badge badge-small">Item/s: {{fooditems|length}}</span>
+      </h3>
       <br>
-      {% csrf_token %}
       {% for item in fooditems %}
         <div class="receipt-item">{{ item.food_id }}
           <span class="receipt-item-price">{{ item.food_price.price }}$</span>
@@ -26,7 +25,7 @@
         </div>
         <hr>
       {% endfor %}
-
     </div>
   </div>
+
 {% endblock %}
