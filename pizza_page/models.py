@@ -15,7 +15,7 @@ def save_img(instance, filename):
 class Food(models.Model):
     name = models.CharField(max_length=64)
     image = models.ImageField(upload_to=save_img, null=True)
-
+    description = models.TextField(max_length=50)
     def __str__(self):
         return f"{self.name}"
 
@@ -26,11 +26,12 @@ class Price(models.Model):
         ('S', 'Small'),
         ('L', 'Large'),
     )
-    size = models.CharField(max_length=1, choices=name_selection)
+    name = models.CharField(max_length=1, choices=name_selection)
     price = models.DecimalField(max_digits=4, decimal_places=2)
+    delivery_charge = models.IntegerField(default=3)
 
     def __str__(self):
-        return f"{self.price} - {self.size}"
+        return f"{self.price} $ - {self.name}"
 
 class Order(models.Model):
     cust_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="customer_id")
@@ -41,11 +42,11 @@ class Order(models.Model):
         ('CO', 'Completed'),
     )
     status = models.CharField(max_length=2, choices=status_selection)
-
     def __str__(self):
         return f"order no: {self.id}"
 
 class OrderItem(models.Model):
     order_id = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="order_id")
+
     food_id = models.ForeignKey(Food, on_delete=models.CASCADE, related_name="order_food_id")
     food_price = models.ForeignKey(Price, on_delete=models.CASCADE, related_name="order_price_id")

@@ -16,15 +16,18 @@
       </h3>
       <br>
       {% for item in fooditems %}
-        <div class="receipt-item">{{ item.food_id }}
-          <span class="receipt-item-price">{{ item.food_price.price }}$</span>
-        </div>
-        <div class="">
-          <span>Total (USD)</span>
-          <strong>{{ total }}</strong>
+        <div class="receipt-item">
+          {{ item.food_id }}
+          <span class="receipt-item-price"><strong>{{ item.food_price.price }}</strong> $</span>
+          <br>
         </div>
         <hr>
       {% endfor %}
+      <span class="receipt-item-price">Delivery Charge - <strong>{{deliverycost}} $</strong></span>
+      <div class="">
+          <span>Total (USD)/(EUR)</span>
+          <strong>{{total}} $</strong>
+        </div>
     </div>
   </div>
 

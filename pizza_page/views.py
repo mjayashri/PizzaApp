@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Food, Price, OrderItem, Order
-
 # Create your views here.
 def main_view(request):
 
@@ -56,6 +55,8 @@ def main_view(request):
             order.status = 'PL'
             order.save()
 
+    order = Order.objects.all()
+
     # if get request
     context = {
         "user": request.user,
@@ -69,6 +70,7 @@ def main_view(request):
         for i in context["fooditems"]:
             context["total"] += i.food_price.price
 
+        context["deliverycost"] = 3
     except AttributeError:
         pass
 
@@ -92,7 +94,6 @@ def order(request, orderid):
     context = {
     "posted_order": posted_order
     }
-
     # check if user has (placed) orders and return orders
     try:
         context["posted_orders"] = Order.objects.filter(cust_id=request.user.id).exclude(status="NP").all()
@@ -103,11 +104,15 @@ def order(request, orderid):
         context["fooditems"] = Order.objects.filter(cust_id=request.user.id, id=orderid).first().order_id.all()
     except:
         raise Http404("You don't have an order with this no")
-
-    context["total"] = 0
+    context["deliverycost"] = 3
+    context["total"] = context["deliverycost"]
 
     for i in context["fooditems"]:
         context["total"] += i.food_price.price
+
+
+
+    # context["total-euro"] = Decimal(context["total-dollar"]/0.15)
     return render(request, "order.html", context)
 
 @login_required
@@ -124,4 +129,3 @@ def orders_list(request):
 
 def order_confirmation(request):
     return render(request, "place_order.html")
-

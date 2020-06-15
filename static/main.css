@@ -17,11 +17,13 @@
 }
 body {
     margin: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Kaushan Script', cursive;
     font-weight: 500;
+    font-size: medium;
 }
 h3,h2{
     color: var(--color-2);
+    font-family: 'Kaushan Script', cursive;
 }
 header {
     background: var(--color-4);
@@ -39,7 +41,7 @@ main.main-view{
     left: 0;
 }
 /* container box for centering */
-.container {        
+.container {
     width: 90%;
     margin: 0 auto;
     display: flex;
@@ -320,9 +322,12 @@ hr {
     color: white;
     opacity: 0;     /* set the text opacity initially to 0 (transperent), then 1 on hover  */
     transition: opacity ease-out 250ms;
+    text-align: center;
 }
 .card-title{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    text-align: center;
+    font-family: 'Kaushan Script', cursive;
 }
 /* set common style for before and ofter */
 .card::before, .card::after{
@@ -358,6 +363,7 @@ hr {
 }
 .card:hover .card-text {
     opacity: 1;
+
   }
 
 /* //////////////////////////////////////////// */
@@ -412,7 +418,7 @@ legend{
     position: center;
     font-weight: 100;
     font-size: large;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Kaushan Script', cursive;
 }
 .btn-main-lg:hover {
     color: var(--color-2);
