@@ -10,8 +10,8 @@ Pizza App is built using python-django web framework.
 
 ### Image of the app
 
-![](screenshot1.png | width=100)
+! [](screenshot1.png | width=100)
 
 ### Image of the app
 
-![](screenshot2.png | width=100)
+! [](screenshot2.png | width=100)
