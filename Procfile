@@ -1,0 +1,1 @@
+web: gunicorn templates/register.html
