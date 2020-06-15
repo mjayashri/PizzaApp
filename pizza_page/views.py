@@ -4,8 +4,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Food, Price, OrderItem, Order
-from decimal import *
-getcontext().prec = 2
 
 # Create your views here.
 def main_view(request):
@@ -73,7 +71,8 @@ def main_view(request):
         for i in context["fooditems"]:
             context["total"] += i.food_price.price
 
-        context["totaleuro"] = round(context["total"]/Decimal(0.15),2)
+        context["totaleuro"] = round(context["total"]/0.15,2)
+
         context["deliverycost"] = 3
     except AttributeError:
         pass
@@ -115,7 +114,7 @@ def order(request, orderid):
     for i in context["fooditems"]:
         context["total"] += i.food_price.price
 
-    context["totaleuro"] = round(context["total"]/Decimal(0.15),2)
+    context["totaleuro"] = round(context["total"]/0.15,2)
 
     # context["total-euro"] = Decimal(context["total-dollar"]/0.15)
     return render(request, "order.html", context)
