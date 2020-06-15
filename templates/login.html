@@ -12,7 +12,7 @@
 
 {% block body %}
 <div class="col-md-6-center">
-  <form action="" method="POST" class="form-control-lg">
+  <form action="{% static 'main_view' %}" method="POST" class="form-control-lg">
       {% csrf_token %}
         <fieldset class="form-group">
             <legend>Sign In</legend>
