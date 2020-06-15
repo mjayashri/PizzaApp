@@ -3,3 +3,4 @@ django-heroku
 django-widget-tweaks
 Pillow >= 2.0.0
 secrets
+OpenSSL
