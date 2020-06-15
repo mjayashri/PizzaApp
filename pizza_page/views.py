@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Food, Price, OrderItem, Order
+
 # Create your views here.
 def main_view(request):
 
