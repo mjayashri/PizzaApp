@@ -3,3 +3,4 @@ Pillow
 django-widget-tweaks
 django-heroku
 gunicorn
+whitenoise
