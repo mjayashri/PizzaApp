@@ -1,1 +1,1 @@
-web: gunicorn templates/register.html
+web: gunicorn pizza_app.wsgi --log-file -'
