@@ -14,7 +14,7 @@ def save_img(instance, filename):
 
 class Food(models.Model):
     name = models.CharField(max_length=64)
-    image = models.ImageField(upload_to=save_img, null=True)
+    image = models.ImageField(upload_to="pictures/", null=True)
     description = models.TextField(max_length=50)
     def __str__(self):
         return f"{self.name}"
