@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'user_profile',
     'pizza_page',
     'widget_tweaks',
-    'clear_cache',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
